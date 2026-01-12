@@ -21,10 +21,6 @@ resource "aws_cloudfront_distribution" "default" {
       name  = "fromcloudfront"
       value = var.alb_cloudfront_key
     }
-
-    lifecycle {
-        ignore_changes = [aliases]
-    }
   }
 
   default_cache_behavior {
@@ -61,4 +57,8 @@ resource "aws_cloudfront_distribution" "default" {
   }
 
   web_acl_id = var.cloudfront_web_acl_id
+
+  lifecycle {
+      ignore_changes = [aliases]
+  }
 }
