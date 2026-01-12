@@ -21,6 +21,10 @@ resource "aws_cloudfront_distribution" "default" {
       name  = "fromcloudfront"
       value = var.alb_cloudfront_key
     }
+
+    lifecycle {
+        ignore_changes = [aliases]
+    }
   }
 
   default_cache_behavior {
